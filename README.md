@@ -2,9 +2,9 @@
 
 PDBe Molstar is an interactive protein visualization library popularly used on [PDBe](https://www.ebi.ac.uk/pdbe/) and [AlphaFoldDB](https://alphafold.ebi.ac.uk/) to visualize protein structures. This library is an implementation of [Mol\* (/'mol-star/)](https://github.com/molstar/molstar).
 
+<img width="500" alt="Demo of PDBeMolstar visualization." src="https://github.com/xnought/pdbe-molstar/assets/65095341/ede6bea0-ffc9-40a4-91b5-52b82443dffe">
+
 See some of our **live examples** below with the JS Plugin `PDBeMolstarPlugin` or the web component `<pdbe-molstar>`:
-
-
 | API  | Live Demo Link  | Description |
 |---|---|---|
 | JS Plugin  |  [Basic Usage](https://embed.plnkr.co/plunk/094fAnyWsuQVtYja) | Render a protein in using JavaScript with `PDBeMolstarPlugin`. |
