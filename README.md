@@ -1,8 +1,17 @@
 # PDBe Molstar
 
-PDBe implementation of [Mol\* (/'mol-star/)](https://github.com/molstar/molstar)
+PDBe Molstar is an interactive protein visualization library popularly used on [PDBe](https://www.ebi.ac.uk/pdbe/) and [AlphaFoldDB](https://alphafold.ebi.ac.uk/) to visualize protein structures. This library is an implementation of [Mol\* (/'mol-star/)](https://github.com/molstar/molstar).
 
-**Refer [PDBe Molstar Wiki](https://github.com/PDBeurope/pdbe-molstar/wiki) for detailed documentation and examples**
+See some of our **live examples** below with the JS Plugin `PDBeMolstarPlugin` or the web component `<pdbe-molstar>`:
+
+
+| API  | Live Demo Link  | Description |
+|---|---|---|
+| JS Plugin  |  [Basic Usage](https://embed.plnkr.co/plunk/094fAnyWsuQVtYja) | Render a protein in using JavaScript with `PDBeMolstarPlugin`. |
+| JS Plugin  |  [AlphaFold DB View](https://embed.plnkr.co/plunk/WlRx73uuGA9EJbpn) | Render an AlphaFold protein that contains pLDDT coloring with `alphafoldView: true`.|
+| JS Plugin  |  [Helper functions](https://embed.plnkr.co/plunk/afXaDJsKj9UutcTD) | Programmatically interact with the protein via JavaScript with Helper Functions (e.g., custom coloring/selecting, rotating, etc.). |
+| Web component  |  [Basic Usage](https://embed.plnkr.co/plunk/kKn7XBc8lZQ1GwKx) | Render a protein using the web component `<pdbe-molstar>`. |
+| Web component  |  [Helper functions](https://embed.plnkr.co/plunk/m3GxFYx9cBjIanBp) | Programmatically interact with the protein from the web component. |
 
 ## Building & Running locally
 
