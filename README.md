@@ -77,7 +77,7 @@ Example above from [AlphaFold DB View](https://embed.plnkr.co/plunk/WlRx73uuGA9E
 
 See the [render options](#viewerinstancerenderviewercontainer-renderoptions) in the API reference for more options.
 
-### Web Component Usage
+## Web Component Usage
 
 **1. Include the style and script files of the library in your web page**
 
