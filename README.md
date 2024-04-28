@@ -254,9 +254,30 @@ or you can retrieve it from the [Web Component Usage](#web-component-usage) like
 ```
 
 ### Canvas/layout methods
+
+<a href="#setBgColor" id="setBgColor">#</a>  viewerInstance.`setBgColor`(_object_)
+
+Sets Canvas background color in the viewerInstance with an RGB value.
+
+The input argument _object_  is type 
+
+```ts 
+{r:number, g:number, b:number}
+```
+
+**Example**
+```js
+viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
+```
+
+> [!NOTE]
+> Changes the `color` variable on the viewerInstance under the hood.
+
+
+<hr />
+
 |No.|Function|Parameters|Description|
 |---|---|---|---|
-|1|setBgColor|`color`<br>Type: `json`<br>`{r:number, g:number, b:number}`|Set Canvas background color<br>Example:`viewerInstance.canvas.setBgColor({r:255, g:255, b:255})` <br>will set the background to white
 |2|toggleControls|`isVisible`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle controls menu<br>Example:`viewerInstance.canvas.toggleControls(true)`<br>will make the controls visible|
 |3|toggleExpanded|`isExpanded`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle full-screen<br>Example:`viewerInstance.canvas.toggleExpanded(true)`<br>will switch to full-screen|
 
