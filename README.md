@@ -363,7 +363,7 @@ document.addEventListener('PDB.molstar.mouseout', () => { /* callback on mouseou
 ```
 <hr />
 
-<a href="#load-complete" id="load-complete">#</a>  viewerInstance.events.`loadComplete`(_callback_)
+<a href="#loadComplete" id="loadComplete">#</a>  viewerInstance.events.`loadComplete`(_callback_)
 
 This is a reactive event available on the viewerInstance. the _callback_ is fired on load/render completion.
 
@@ -371,7 +371,7 @@ This is a reactive event available on the viewerInstance. the _callback_ is fire
 viewerInstance.events.loadComplete.subscribe(() => { /* callback after 3d view is rendered  */});
 ```
 
-
+<hr />
 
 
 ## Development
