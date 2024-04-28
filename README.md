@@ -455,8 +455,13 @@ _object_ is of type
 ```
 
 **Example**
+will highlight chain A from residues 10 to 15
+
 ```js
-viewerInstance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`
+viewerInstance.visual.highlight({ data: [{entity_id: '1', 
+                                          struct_asym_id: 'A', 
+                                          start_residue_number: 10, 
+                                          end_residue_number: 15}] })`
 ```
 
 <hr />
