@@ -258,8 +258,6 @@ or you can retrieve it from the [Web Component Usage](#web-component-usage) like
 Methods that call the `viewerInstance.canvas` which change the global layout.
 Note the `viewerInstance` refers to the instance of `PDBeMolstarPlugin` as shown [here](#helper-methods-api-reference).
 
-<hr />
-
 <a href="#setBgColor" id="setBgColor">#</a>  viewerInstance.canvas.`setBgColor`(_object_)
 
 Sets Canvas background color in the viewerInstance with an RGB value.
@@ -320,8 +318,6 @@ viewerInstance.canvas.toggledExpanded(true)
 ### Visual methods
 
 Methods caleed from `viewerInstance.visual` that directly change the protein structure visuals. Note the `viewerInstance` refers to the instance of `PDBeMolstarPlugin` as shown [here](#helper-methods-api-reference).
-
-<hr />
 
 <a href="#visibility" id="visibility">#</a>  viewerInstance.visual.`visibility`(_object_)
 
@@ -551,16 +547,79 @@ viewerInstance.visual.clearSelection()
 
 <hr />
 
-|No.|Function|Parameters|Description|
-|---|---|---|---|
-|8|setColor|`data`<br>Type: `json`<br>`{ highlight?: {r:number, g:number, b:number}, select?: {r:number, g:number, b:number} }`|Set highlight / selection colour<br>Example:`viewerInstance.visual.setColor({ highlight: {r:255,g:255,b:0} })`<br> will set highlight colour to yellow. The selection colour refers to the colour used in the Selection Mode (the mouse cursor icon) and is not related to the colour used by the `select` method above.|
-|9|reset|`data`<br>Type: `json`<br>`{ camera?: boolean, theme?: boolean, highlightColor?: boolean, selectColor?: boolean }`|Reset to defaults<br>Example:`viewerInstance.visual.reset({ camera: true, theme: true })`<br>will reset camera and theme to defaults|
-|10|update|(options: PluginParams, reLoad?: boolean)<br> for plugin params [Refer here](https://github.com/PDBeurope/pdbe-molstar/wiki/1.-PDBe-Molstar-as-JS-plugin#plugin-parameters-options)|Updates the instance<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'})`<br>This method particularly used to update the main data(source)<br><br>Set reload param to false to load additional structure<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'}, false)`|
+<a href="#setColor" id="setColor">#</a>  viewerInstance.visual.`setColor`(_object_)
+Sets the color in selection mode.
+
+> [!IMPORTANT]
+> The selection color refers to the color used in the Selection Mode (the mouse cursor icon) and is not related to the color used by the `select` method above.
+
+_object_ is of type
+
+```ts
+{ 
+  highlight?: {r:number, g:number, b:number}, 
+  select?: {r:number, g:number, b:number} 
+}
+```
+
+**Example** 
+will set highlight color to yellow. 
+
+```js
+viewerInstance.visual.setColor({ highlight: {r:255,g:255,b:0} })
+```
+
+<hr />
+
+<a href="#reset" id="reset">#</a>  viewerInstance.visual.`reset`(_object_)
+
+Resets to defaults.
+
+_object_ is of type
+
+```ts
+{ 
+  camera?: boolean, 
+  theme?: boolean, 
+  highlightColor?: boolean, 
+  selectColor?: boolean
+}
+```
+
+**Example**
+will reset camera and theme to defaults
+
+```js
+viewerInstance.visual.reset({ camera: true, theme: true })
+```
+
+<hr />
+
+
+<a href="#update" id="update">#</a>  viewerInstance.visual.`update`(_object_, _boolean?_)
+
+Updates the viewerInstance without doing all the initial overhead of calling the `render` function again. _optionally_ takes a boolean in the second argument whether to fully reload (default: set to true) or just add the other structure on top (if set to false).
+
+_object_ is the same object type passed as the render option in the [`render`](#viewerinstancerenderviewercontainer-renderoptions) function.
+
+
+**Example**
+This method particularly used to update the main data(source)
+
+```js
+viewerInstance.visual.update({moleculeId: '1cbs'})
+```
+
+**Example** 
+Set reload param to false to load additional structure
+```js
+viewerInstance.visual.update({moleculeId: '1cbs'}, false)
+```
+
+<hr />
 
 ### Custom Events
 Event listeners, functions listed below, can be used to bind the PDBe Molstar custom events.
-
-<hr />
 
 <a href="#click" id="click">#</a>  document.addEventListener(`'PDB.molstar.click'`, _callback_)
 
