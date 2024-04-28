@@ -217,11 +217,69 @@ These attributes match the render initialization options in [JS Plugin API Refer
 |`landscape`|Set landscape layout (control panels on the sides instead of above and under the canvas). The controls will similar to the full-screen view.<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" landscape="true"></pdbe-molstar>`<br><br>**default - false|
 |`reactive`|Set reactive layout (switching between landscape and portrait based on the browser window size).<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" reactive="true"></pdbe-molstar>`<br><br>**default - false|
 
+## Helper Methods API Reference
+
+The `viewerInstance` (the PDBeMolstarPlugin object) has many helper functions for you to programmatically interact with the protein visuals.
+
+To remind you, you get the `viewerInstance` with the [JS Plugin Usage](#js-plugin-usage) when you initialize the `PDBeMolstarPlugin` like
+
+```html
+<script>
+    const viewerInstance = new PDBeMolstarPlugin(); // JS Plugin
+    const viewerContainer = document.getElementById('myViewer'); // in DOM
+</script>
+```
+
+or you can retrieve it from the [Web Component Usage](#web-component-usage) like
+
+```html
+<!-- Molstar container -->
+<pdbe-molstar id="pdbeMolstarComponent" molecule-id="2nnu" hide-controls="true"></pdbe-molstar>
+<script>
+  let viewerInstance;
+  window.onload = function () {
+      const pdbeMolstarComponent = document.getElementById('pdbeMolstarComponent'); // in DOM
+      viewerInstance = pdbeMolstarComponent.viewerInstance; //❗:type PDBeMolstarPlugin
+  };
+</script>
+```
+
+### Canvas/layout methods
+|No.|Function|Parameters|Description|
+|---|---|---|---|
+|1|setBgColor|`color`<br>Type: `json`<br>`{r:number, g:number, b:number}`|Set Canvas background color<br>Example:`Instance.canvas.setBgColor({r:255, g:255, b:255})` <br>will set the background to white
+|2|toggleControls|`isVisible`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle controls menu<br>Example:`Instance.canvas.toggleControls(true)`<br>will make the controls visible|
+|3|toggleExpanded|`isExpanded`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle full-screen<br>Example:`Instance.canvas.toggleExpanded(true)`<br>will switch to full-screen|
+
+### Visual methods
+|No.|Function|Parameters|Description|
+|---|---|---|---|
+|1|visibility|`data`<br>Type: `json`<br>`{polymer: boolean, het: boolean, water: boolean, carbs: boolean, maps: boolean}`|Change the visual entities visibility<br>Example:`Instance.visual.visibility({het:false, water:false})` <br>will hide the HET and water visuals|
+|2|toggleSpin|`isSpinning`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle visual rotation<br>Example:`Instance.visual.toggleSpin(true)`<br>will rotate the visual|
+|3|focus|`params`<br>Type: `json`<br>`[{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string}[], atom_id?: number[]}], uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number`|Focus on a particular visual section <br>Example:`Instance.visual.focus([{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}])`<br>will focus on residue range 10-15 of Chain 'A' of Entity 1|
+|4|highlight|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[]}], color: {r:number, g:number, b:number}, focus?: boolean, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number }`|Trigger highlight<br>Example:`Instance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`|
+|5|clearHighlight|-|Clear highlight<br>Example:`Instance.visual.clearHighlight()`|
+|6|select|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[], color: {r:number, g:number, b:number}, focus?: boolean, sideChain?: boolean, representation?: 'cartoon\|backbone\|ball-and-stick\|ellipsoid\|gaussian-surface\|line\|molecular-surface\|spacefill', representationColor?: {r:number, g:number, b:number}, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number}], nonSelectedColor: {r:number, g:number, b:number}, structureNumber?: number }`|Color and focus on a specific visual section<br>Example:`Instance.visual.select({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15, color:{r:255,g:0,b:0}, focus: true}], nonSelectedColor: {r:255,g:255,b:255} })`<br>will color residue range 10-15 of Chain 'A' of Entity 1 in red and other residues with the provided default yellow color.|
+|7|clearSelection|Optional: `structureNumber`<br>Type: `number`|Clear Selection<br>Example:`Instance.visual.clearSelection()`|
+|8|setColor|`data`<br>Type: `json`<br>`{ highlight?: {r:number, g:number, b:number}, select?: {r:number, g:number, b:number} }`|Set highlight / selection colour<br>Example:`Instance.visual.setColor({ highlight: {r:255,g:255,b:0} })`<br> will set highlight colour to yellow. The selection colour refers to the colour used in the Selection Mode (the mouse cursor icon) and is not related to the colour used by the `select` method above.|
+|9|reset|`data`<br>Type: `json`<br>`{ camera?: boolean, theme?: boolean, highlightColor?: boolean, selectColor?: boolean }`|Reset to defaults<br>Example:`Instance.visual.reset({ camera: true, theme: true })`<br>will reset camera and theme to defaults|
+|10|update|(options: PluginParams, reLoad?: boolean)<br> for plugin params [Refer here](https://github.com/PDBeurope/pdbe-molstar/wiki/1.-PDBe-Molstar-as-JS-plugin#plugin-parameters-options)|Updates the instance<br>Example:`Instance.visual.update({moleculeId: '1cbs'})`<br>This method particularly used to update the main data(source)<br><br>Set reload param to false to load additional structure<br>Example:`Instance.visual.update({moleculeId: '1cbs'}, false)`|
+
+### Custom Events
+Event listeners can be used to bind the PDBe Molstar custom events
+
+|No.|Event|Description|
+|---|---|---|
+|1|PDB.molstar.click|Binds to click event. Event data (available in key = 'eventData') contains information structure residue clicked<br>Example:`document.addEventListener('PDB.molstar.click', (e) => { //do something on event });`|  
+|2|PDB.molstar.mouseover|Binds to mouseover event.<br>Example:`document.addEventListener('PDB.molstar.mouseover', (e) => { //do something on event });`| 
+|3|PDB.molstar.mouseout|Binds to mouseout event.<br>Example:`document.addEventListener('PDB.molstar.mouseout', () => { //do something on event });`|
+|4|loadComplete|This is a reactive event available on the viewer instance. It is fired on load/render completion.<br>Example:`viewerInstance.events.loadComplete.subscribe(() => { //do something after 3d view is rendered });`|
 
 
 
+## Development
 
-## Building & Running locally
+### Building & Running locally
 
 ```sh
 npm install
@@ -230,19 +288,19 @@ npm run build
 npm run serve
 ```
 
-## Build automatically on file save:
+### Build automatically on file save:
 
 ```sh
 npm run watch
 ```
 
-## Manual testing
+### Manual testing
 
 - Run locally by `npm run serve`
 - Go to <http://127.0.0.1:1338/portfolio.html> and check the viewer with various different setting (some of these reflect the actual setting on PDBe pages)
 - If you want to tweak the options, go to "Frame URL" and change the options in the URL
 
-## Deployment
+### Deployment
 
 - Bump version in `package.json` using semantic versioning
   - Use a version number like "1.2.3-beta.1" for development versions (to be used in development environment wwwdev.ebi.ac.uk)
