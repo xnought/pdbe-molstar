@@ -265,7 +265,16 @@ The input argument _object_  is type
 {r:number, g:number, b:number}
 ```
 
+| _object_ attribute  |  Description |
+|---|---|
+| r  | red integer between [0, 255]  |
+| g  | green integer between [0, 255]  |
+| b  | blue integer between [0, 255]  |
+
+
 **Example**
+Setting the background color to white
+
 ```js
 viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 ```
