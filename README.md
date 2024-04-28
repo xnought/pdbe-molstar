@@ -182,6 +182,43 @@ Value for either `moleculeId` or `customData` is required (if both are provided 
 
 ## Web Component API Reference
 
+### `<pdbe-molstar></pdbe-molstar>` attributes
+
+These attributes match the render initialization options in [JS Plugin API Reference](#viewerinstancerenderviewercontainer-renderoptions), but for the HTML component `<pdbe-molstar></pdbe-molstar>`.
+
+|Attribute|Details|
+|---|---|
+|`molecule-id`|Load PDB Data<br>Example:<br>`<pdbe-molstar molecule-id="1cbs"></pdbe-molstar>`|
+|`custom-data-url`<br>`custom-data-format`<br>`custom-data-binary`|Load Custom Data<br>Example:<br>`<pdbe-molstar custom-data-url="https://www.ebi.ac.uk/pdbe/model-server/v1/1cbs/full" custom-data-format="cif"></pdbe-molstar>`<br>**`custom-data-binary` is optional|
+|`assembly-id`|Specify Assembly<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" assembly-id="1"></pdbe-molstar>`|
+|`default-preset`|Set default Preset view<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" default-preset="unitcell"></pdbe-molstar>`<br><br>***Accepted values - `'default' \| 'unitcell' \| 'all-models' \| 'supercell'`|
+|`ligand-label-comp-id`<br>`ligand-auth-asym-id`<br>`ligand-struct-asym-id`<br>`ligand-auth-seq-id`<br>`ligand-show-all`|Load PDBe Ligand view<br>[Example (REA)](https://www.ebi.ac.uk/pdbe/entry/pdb/1cbs/bound/REA)<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" ligand-label-comp-id="REA"></pdbe-molstar>`<br><br>*** `molecule-id` is required.<br> At least one of `ligand-label-comp-id` and `ligand-auth-seq-id` is required.|
+|`alphafold-view`|This applies AlphaFold confidence score colouring theme for AlphaFold model<br>**default - false|
+|`visual-style`|Visual styling<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" visual-style="spacefill"></pdbe-molstar>`<br><br>***Accepted values - `'cartoon' \| 'ball-and-stick' \| 'carbohydrate' \| 'distance-restraint' \| 'ellipsoid' \| 'gaussian-surface' \| molecular-surface' \| 'point' \| 'putty' \| 'spacefill'`|
+|`hide-polymer`<br>`hide-water`<br>`hide-het`<br>`hide-carbs`<br>`hide-non-standard`<br>`hide-coarse`|Hide visuals<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" hide-water="true" hide-het="true"></pdbe-molstar>`<br><br>***will not render HET and water visual in the 3D view|
+|`load-maps`|Load Electron Density Maps from the Volume Server<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" load-maps="true"></pdbe-molstar>`<br><br>**default - false|
+|`bg-color-r`<br>`bg-color-g`<br>`bg-color-b`|Background color<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" bg-color-r="255" bg-color-g="255" bg-color-b="255"></pdbe-molstar>`<br><br>This will load structure for '1cbs' and set background color to white|
+|`highlight-color-r`<br>`highlight-color-g`<br>`highlight-color-b`|Highlight color<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" highlight-color-r="255" highlight-color-g="102" highlight-color-b="153"></pdbe-molstar>`<br><br>This will set the default color appearing on mouse-over|
+|`select-color-r`<br>`select-color-g`<br>`select-color-b`|Selection color<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" select-color-r="255" select-color-g="102" select-color-b="153"></pdbe-molstar>`<br><br>This will set the default selection appearing on Shift key + mouse-click|
+|`lighting`|Set default lighting<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" lighting="plastic"></pdbe-molstar>`<br><br>***Accepted values - `'flat' \| 'matte' \| 'glossy' \| 'metallic' \| 'plastic'`|
+|`validation-annotation`|Load Validation Report Annotation<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" validation-annotation="true"></pdbe-molstar>`<br><br>This will add 'Annotations' control in the menu. **default - false|
+|`domain-annotation`|Load Domain Annotation<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" domain-annotation="true"></pdbe-molstar>`<br><br>This will add 'Annotations' control in the menu. **default - false|
+|`symmetry-annotation`|Load Assembly Symmetry Annotation<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" symmetry-annotation="true"></pdbe-molstar>`<br><br>This will add 'Annotations' control in the menu. **default - false|
+|`pdbe-url`|Url for PDB data<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" pdbe-url="https://www.ebi.ac.uk/pdbe/"></pdbe-molstar>`<br><br>***This option is to set the default base url for the data source. Mostly used internally to test the plugin on different environments|
+|`encoding`|Preferred encoding of input structural data<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" encoding="cif"></pdbe-molstar>`<br><br>**default - `"bcif"`|
+|`low-precision`|Load low precision coordinates from the Model server<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" low-precision="true"></pdbe-molstar>`<br><br>**default - true|
+|`select-interaction`|Switch off the default selection interaction behaviour. This option is used while rendering the 'ligandView'<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" select-interaction="false"></pdbe-molstar>`<br><br>**default - true|
+|`subscribe-events`|Subscribe to other PDB Web-components custom events<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" subscribe-events="true"></pdbe-molstar>`<br><br>**default - false|
+|`hide-controls`|Hide controls menu<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" hide-controls="true"></pdbe-molstar>`<br><br>**default - false|
+|`hide-expand-icon`<br>`hide-selection-icon`<br>`hide-animation-icon`|Hide canvas controls<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" hide-expand-icon="true"></pdbe-molstar>`<br><br>This will hide the expand / fullscreen icon|
+|`sequence-panel`|Display Sequence panel|
+|`pdbe-link`|Display PDBe entry link in top right corner of the canvas<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" pdbe-link="false"></pdbe-molstar>`<br><br>**default - true|
+|`expanded`|Display full-screen by default on load<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" expanded="true"></pdbe-molstar>`<br><br>**default - false|
+|`landscape`|Set landscape layout (control panels on the sides instead of above and under the canvas). The controls will similar to the full-screen view.<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" landscape="true"></pdbe-molstar>`<br><br>**default - false|
+|`reactive`|Set reactive layout (switching between landscape and portrait based on the browser window size).<br>Example:<br>`<pdbe-molstar molecule-id="1cbs" reactive="true"></pdbe-molstar>`<br><br>**default - false|
+
+
+
 
 
 ## Building & Running locally
