@@ -318,11 +318,100 @@ viewerInstance.canvas.toggledExpanded(true)
 <hr />
 
 ### Visual methods
+
+Methods caleed from `viewerInstance.visual` that directly change the protein structure visuals. Note the `viewerInstance` refers to the instance of `PDBeMolstarPlugin` as shown [here](#helper-methods-api-reference).
+
+<hr />
+
+<a href="#visibility" id="visibility">#</a>  viewerInstance.visual.`visibility`(_object_)
+
+Changes the visual entities visibility to showing (false) or hidden (true) per attribute.
+
+_object_ function input is type
+```ts
+{ 
+  polymer: boolean, 
+  het: boolean, 
+  water: boolean, 
+  carbs: boolean, 
+  maps: boolean
+}
+```
+
+**Example**
+will hide the HET and water visuals
+
+```js
+viewerInstance.visual.visibility({het:false, water:false})
+``` 
+
+<hr />
+
+<a href="#toggleSpin" id="toggleSpin">#</a>  viewerInstance.visual.`toggleSpin`(_boolean_?)
+
+Toggles visual rotation of everything in the viewerInstance. _optional_ input.
+
+**Example**
+will rotate the visual
+
+```js
+viewerInstance.visual.toggleSpin(true)
+```
+
+<hr />
+
+<a href="#focus" id="focus">#</a>  viewerInstance.visual.`focus`(_object[]_, _number?_)
+
+Focus on a particular visual section defined by an array of _object_ selections and _optionally_ a particular structure _number_. 
+
+_object_ is of type
+```ts
+{
+    auth_seq_id?: number,
+    entity_id?: string,
+    auth_asym_id?: string,
+    struct_asym_id?: string,
+    residue_number?: number,
+    start_residue_number?: number,
+    end_residue_number?: number,
+    auth_residue_number?: number,
+    auth_ins_code_id?: string,
+    start_auth_residue_number?: number,
+    start_auth_ins_code_id?: string,
+    end_auth_residue_number?: number,
+    end_auth_ins_code_id?: string,
+    atoms?: string[],
+    label_comp_id?: string,
+    color?: any,
+    sideChain?: boolean,
+    representation?: string,
+    representationColor?: any,
+    focus?: boolean,
+    tooltip?: string,
+    start?: any,
+    end?: any,
+    atom_id?: number[],
+    uniprot_accession?: string,
+    uniprot_residue_number?: number,
+    start_uniprot_residue_number?: number,
+    end_uniprot_residue_number?: number
+}
+```
+
+**Example**
+will focus on residue range 10-15 of Chain 'A' of Entity 1.
+
+```js
+viewerInstance.visual.focus([{entity_id: '1', 
+                              struct_asym_id: 'A', 
+                              start_residue_number: 10, 
+                              end_residue_number: 15}])
+```
+
+<hr />
+
 |No.|Function|Parameters|Description|
 |---|---|---|---|
-|1|visibility|`data`<br>Type: `json`<br>`{polymer: boolean, het: boolean, water: boolean, carbs: boolean, maps: boolean}`|Change the visual entities visibility<br>Example:`viewerInstance.visual.visibility({het:false, water:false})` <br>will hide the HET and water visuals|
-|2|toggleSpin|`isSpinning`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle visual rotation<br>Example:`viewerInstance.visual.toggleSpin(true)`<br>will rotate the visual|
-|3|focus|`params`<br>Type: `json`<br>`[{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string}[], atom_id?: number[]}], uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number`|Focus on a particular visual section <br>Example:`viewerInstance.visual.focus([{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}])`<br>will focus on residue range 10-15 of Chain 'A' of Entity 1|
 |4|highlight|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[]}], color: {r:number, g:number, b:number}, focus?: boolean, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number }`|Trigger highlight<br>Example:`viewerInstance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`|
 |5|clearHighlight|-|Clear highlight<br>Example:`viewerInstance.visual.clearHighlight()`|
 |6|select|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[], color: {r:number, g:number, b:number}, focus?: boolean, sideChain?: boolean, representation?: 'cartoon\|backbone\|ball-and-stick\|ellipsoid\|gaussian-surface\|line\|molecular-surface\|spacefill', representationColor?: {r:number, g:number, b:number}, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number}], nonSelectedColor: {r:number, g:number, b:number}, structureNumber?: number }`|Color and focus on a specific visual section<br>Example:`viewerInstance.visual.select({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15, color:{r:255,g:0,b:0}, focus: true}], nonSelectedColor: {r:255,g:255,b:255} })`<br>will color residue range 10-15 of Chain 'A' of Entity 1 in red and other residues with the provided default yellow color.|
