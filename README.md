@@ -271,7 +271,7 @@ viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 ```
 
 > [!NOTE]
-> Changes the `color` variable on the viewerInstance under the hood.
+> [`setBgColor`](#setBgColor) changes the `color` variable on the viewerInstance under the hood.
 
 
 <hr />
