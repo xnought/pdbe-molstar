@@ -25,7 +25,7 @@ See some of our **live examples** below with the JS Plugin `PDBeMolstarPlugin` o
 <!-- For Light Theme include this css file instead of the above -->
 <!--<link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-light-3.1.3.css">-->
 <!--
-Tip: Set `bgColor` render option to white ({r:255,g:255,b:255}) for light theme
+Tip: Set `bgColor` render option to white ({r:255,g:255,b:255}) for light theme in js instance initialization
 -->
 
 <!-- JS -->
@@ -76,6 +76,49 @@ Tip: Set `bgColor` render option to white ({r:255,g:255,b:255}) for light theme
 Example above from [AlphaFold DB View](https://embed.plnkr.co/plunk/WlRx73uuGA9EJbpn) live demo.
 
 See the [render options](#viewerinstancerenderviewercontainer-renderoptions) in the API reference for more options.
+
+### Web Component Usage
+
+**1. Include the style and script files of the library in your web page**
+
+```html
+<!-- Required for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+<!-- Web component polyfill (only loads what it needs) -->
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs/webcomponents-lite.js" charset="utf-8"></script>
+<!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js" charset="utf-8"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-3.1.3.css">
+
+<!-- For Light Theme include this css file instead of above -->
+<!--<link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-light-3.1.3.css">-->
+<!--
+Tip: Set background color to white for light theme in component initialization
+-->
+
+<!-- JS -->
+<script type="text/javascript" src="https://www.ebi.ac.uk/pdbe/pdb-component-library/js/pdbe-molstar-component-3.1.3.js"></script>
+```
+*Until web components are natively supported by all browsers, it is necessary to use polyfills
+
+**2. Include PDBe Molstar as HTML Element**
+```html
+<!-- ❗️See API Reference for more render options -->
+<pdbe-molstar molecule-id="1cbs"></pdbe-molstar>
+```
+
+**Note you can add custom data easily like:**
+
+```html
+<pdbe-molstar 
+  custom-data-url="https://alphafold.ebi.ac.uk/files/AF-O15552-F1-model_v1.cif"
+  custom-data-format="cif"
+></pdbe-molstar>
+```
+
+For more initialization options, check the [Web Component API Reference](#web-component-api-reference).
 
 
 ## JS Plugin API Reference
@@ -136,6 +179,9 @@ Value for either `moleculeId` or `customData` is required (if both are provided 
 |expanded|`boolean`<br>Default `false`|Display full-screen by default on load|
 |landscape|`boolean`<br>Default `false`|Set landscape view (control panels on the sides instead of above and under the canvas)|
 |reactive|`boolean`<br>Default `false`|Set reactive layout (switching between landscape and portrait based on the browser window size). Overrides `landscape`.|
+
+## Web Component API Reference
+
 
 
 ## Building & Running locally
