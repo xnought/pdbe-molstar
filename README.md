@@ -280,6 +280,7 @@ Event listeners, functions listed below, can be used to bind the PDBe Molstar cu
 <hr />
 
 <a href="#click" id="click">#</a>  document.addEventListener(`'PDB.molstar.click'`, _callback_)
+
 Binds to click event. Event data (available in key = 'eventData') contains information structure residue clicked (i.e., within the `e` parameter in the _callback_ as shown below).
 
 ```js
@@ -288,6 +289,7 @@ document.addEventListener('PDB.molstar.click', (e) => { /* callback on click */ 
 <hr />
 
 <a href="#mouseover" id="mouseover">#</a>  document.addEventListener(`'PDB.molstar.mouseover'`, _callback_)
+
 Binds to mouseover event and calls your provided _callback_.
 
 ```js
@@ -296,6 +298,7 @@ document.addEventListener('PDB.molstar.mouseover', () => { /* callback on mouseo
 <hr />
 
 <a href="#mouseout" id="mouseout">#</a>  document.addEventListener(`'PDB.molstar.mouseout'`, _callback_)
+
 Binds to mouseout event and calls your provided _callback_.
 
 ```js
@@ -304,6 +307,7 @@ document.addEventListener('PDB.molstar.mouseout', () => { /* callback on mouseou
 <hr />
 
 <a href="#load-complete" id="load-complete">#</a>  viewerInstance.events.`loadComplete`(_callback_)
+
 This is a reactive event available on the viewerInstance. the _callback_ is fired on load/render completion.
 
 ```js
