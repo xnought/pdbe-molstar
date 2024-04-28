@@ -14,6 +14,15 @@ See some of our **live examples** below with the JS Plugin `PDBeMolstarPlugin` o
 | Web component  |  [Helper functions](https://embed.plnkr.co/plunk/m3GxFYx9cBjIanBp) | Programmatically interact with the protein from the web component. |
 | Python Notebooks (external library) | [ipymolstar](https://github.com/Jhsmit/ipymolstar)| Wrapper on the `PDBeMolstarPlugin` for python notebooks by [Jhsmit](https://github.com/Jhsmit). This is an external library not affiliated with PDBe or Molstar.  |   |
 
+**`README.md` Table of contents**
+- Usage
+  - [JS Plugin Usage](#js-plugin-usage): use `PDBeMolstarPlugin` to render proteins in JavaScript
+  - [Web Component Usage](#web-component-usage): use `<pdbe-molstar>` to render proteins with just HTML
+- API Reference
+  - [JS Plugin API Reference](#js-plugin-api-reference): render options 
+  - [Web Component API Reference](#web-component-api-reference): HTML attributes (mirrors render options in JS Plugin API)
+  - [Helper Methods API Reference](#helper-methods-api-reference): ways to interact with the protein programmatically (e.g., toggle spin, toggle full screen, custom coloring, etc.).
+
 ## JS Plugin Usage
 
 **1. Include the style and script files of the library in your web page**
