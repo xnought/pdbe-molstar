@@ -548,6 +548,7 @@ viewerInstance.visual.clearSelection()
 <hr />
 
 <a href="#setColor" id="setColor">#</a>  viewerInstance.visual.`setColor`(_object_)
+
 Sets the color in selection mode.
 
 > [!IMPORTANT]
