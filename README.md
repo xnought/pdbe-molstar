@@ -277,10 +277,6 @@ Setting the background color to white
 viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 ```
 
-> [!NOTE]
-> [`setBgColor`](#setBgColor) changes the `color` variable on the viewerInstance under the hood.
-
-
 <hr />
 
 <a href="#toggleControls" id="toggleControls">#</a>  viewerInstance.canvas.`toggleControls`(_boolean_?)
@@ -294,9 +290,6 @@ Will make the controls visible
 viewerInstance.canvas.toggleControls(true)
 ```
 
-> [!NOTE]
-> [`toggleControls`](#toggleControls) changes the `isVisible` variable on the viewerInstance under the hood.
-
 <hr />
 
 <a href="#toggleExpanded" id="toggleExpanded">#</a>  viewerInstance.canvas.`toggledExpanded`(_boolean_?)
@@ -309,9 +302,6 @@ Will switch to full-screen
 ```js
 viewerInstance.canvas.toggledExpanded(true)
 ```
-
-> [!NOTE]
-> [`toggleExpanded`](#toggleExpanded) changes the `isExpanded` variable on the viewerInstance under the hood.
 
 <hr />
 
