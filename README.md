@@ -255,7 +255,12 @@ or you can retrieve it from the [Web Component Usage](#web-component-usage) like
 
 ### Canvas/layout methods
 
-<a href="#setBgColor" id="setBgColor">#</a>  viewerInstance.`setBgColor`(_object_)
+Methods that call the `viewerInstance.canvas` which change the global layout.
+Note the `viewerInstance` refers to the instance of `PDBeMolstarPlugin` as shown [here](#helper-methods-api-reference).
+
+<hr />
+
+<a href="#setBgColor" id="setBgColor">#</a>  viewerInstance.canvas.`setBgColor`(_object_)
 
 Sets Canvas background color in the viewerInstance with an RGB value.
 
@@ -280,7 +285,7 @@ viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 
 <hr />
 
-<a href="#toggleControls" id="toggleControls">#</a>  viewerInstance.`toggleControls`(_boolean_?)
+<a href="#toggleControls" id="toggleControls">#</a>  viewerInstance.canvas.`toggleControls`(_boolean_?)
 
 Toggles the control menu on (true) or off (false).  _optional_ input.
 
@@ -296,7 +301,7 @@ viewerInstance.canvas.toggleControls(true)
 
 <hr />
 
-<a href="#toggleExpanded" id="toggleExpanded">#</a>  viewerInstance.`toggledExpanded`(_boolean_?)
+<a href="#toggleExpanded" id="toggleExpanded">#</a>  viewerInstance.canvas.`toggledExpanded`(_boolean_?)
 
 Expands the viewerInstance to full-screen on (true) or off (false). _optional_ input.
 
@@ -309,6 +314,8 @@ viewerInstance.canvas.toggledExpanded(true)
 
 > [!NOTE]
 > [`toggleExpanded`](#toggleExpanded) changes the `isExpanded` variable on the viewerInstance under the hood.
+
+<hr />
 
 ### Visual methods
 |No.|Function|Parameters|Description|
