@@ -275,14 +275,41 @@ or you can retrieve it from the [Web Component Usage](#web-component-usage) like
 |10|update|(options: PluginParams, reLoad?: boolean)<br> for plugin params [Refer here](https://github.com/PDBeurope/pdbe-molstar/wiki/1.-PDBe-Molstar-as-JS-plugin#plugin-parameters-options)|Updates the instance<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'})`<br>This method particularly used to update the main data(source)<br><br>Set reload param to false to load additional structure<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'}, false)`|
 
 ### Custom Events
-Event listeners can be used to bind the PDBe Molstar custom events
+Event listeners, functions listed below, can be used to bind the PDBe Molstar custom events.
 
-|No.|Event|Description|
-|---|---|---|
-|1|PDB.molstar.click|Binds to click event. Event data (available in key = 'eventData') contains information structure residue clicked<br>Example:`document.addEventListener('PDB.molstar.click', (e) => { //do something on event });`|  
-|2|PDB.molstar.mouseover|Binds to mouseover event.<br>Example:`document.addEventListener('PDB.molstar.mouseover', (e) => { //do something on event });`| 
-|3|PDB.molstar.mouseout|Binds to mouseout event.<br>Example:`document.addEventListener('PDB.molstar.mouseout', () => { //do something on event });`|
-|4|loadComplete|This is a reactive event available on the viewer instance. It is fired on load/render completion.<br>Example:`viewerInstance.events.loadComplete.subscribe(() => { //do something after 3d view is rendered });`|
+<hr />
+
+<a href="#click" id="click">#</a>  document.addEventListener(`'PDB.molstar.click'`, _callback_)
+Binds to click event. Event data (available in key = 'eventData') contains information structure residue clicked (i.e., within the `e` parameter in the _callback_ as shown below).
+
+```js
+document.addEventListener('PDB.molstar.click', (e) => { /* callback on click */ });`
+```
+<hr />
+
+<a href="#mouseover" id="mouseover">#</a>  document.addEventListener(`'PDB.molstar.mouseover'`, _callback_)
+Binds to mouseover event and calls your provided _callback_.
+
+```js
+document.addEventListener('PDB.molstar.mouseover', () => { /* callback on mouseover */ });
+```
+<hr />
+
+<a href="#mouseout" id="mouseout">#</a>  document.addEventListener(`'PDB.molstar.mouseout'`, _callback_)
+Binds to mouseout event and calls your provided _callback_.
+
+```js
+document.addEventListener('PDB.molstar.mouseout', () => { /* callback on mouseout */ });
+```
+<hr />
+
+<a href="#load-complete" id="load-complete">#</a>  viewerInstance.events.`loadComplete`(_callback_)
+This is a reactive event available on the viewerInstance. the _callback_ is fired on load/render completion.
+
+```js
+viewerInstance.events.loadComplete.subscribe(() => { /* callback after 3d view is rendered  */});
+```
+
 
 
 
