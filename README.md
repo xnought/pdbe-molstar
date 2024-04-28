@@ -466,12 +466,93 @@ viewerInstance.visual.highlight({ data: [{entity_id: '1',
 
 <hr />
 
+<a href="#clearHighlight" id="clearHighlight">#</a>  viewerInstance.visual.`clearHighlight`()
+
+Clears the [highlight](#highlight) selection.
+
+**Example**
+
+```js
+viewerInstance.visual.clearHighlight()
+```
+
+<hr />
+
+<a href="#select" id="select">#</a>  viewerInstance.visual.`select`(_object_)
+
+Color and focus on a specific visual section. This is how you can do custom residue coloring among other things.
+
+_object_ is of type
+
+```ts
+{
+  data: {
+        auth_seq_id?: number,
+        entity_id?: string,
+        auth_asym_id?: string,
+        struct_asym_id?: string,
+        residue_number?: number,
+        start_residue_number?: number,
+        end_residue_number?: number,
+        auth_residue_number?: number,
+        auth_ins_code_id?: string,
+        start_auth_residue_number?: number,
+        start_auth_ins_code_id?: string,
+        end_auth_residue_number?: number,
+        end_auth_ins_code_id?: string,
+        atoms?: string[],
+        label_comp_id?: string,
+        color?: any,
+        sideChain?: boolean,
+        representation?: string,
+        representationColor?: any,
+        focus?: boolean,
+        tooltip?: string,
+        start?: any,
+        end?: any,
+        atom_id?: number[],
+        uniprot_accession?: string,
+        uniprot_residue_number?: number,
+        start_uniprot_residue_number?: number,
+        end_uniprot_residue_number?: number
+      }[],
+    nonSelectedColor?: any, 
+    structureNumber?: number, 
+    keepColors?: boolean, 
+    keepRepresentations?: boolean
+}
+```
+
+**Example**
+
+will color residue range 10-15 of Chain 'A' of Entity 1 in red and other residues with the provided default yellow color.
+
+```js
+viewerInstance.visual.select({ data: [{entity_id: '1', 
+                                       struct_asym_id: 'A', 
+                                       start_residue_number: 10, 
+                                       end_residue_number: 15, 
+                                       color:{r:255,g:0,b:0}, 
+                                       focus: true}], 
+                                nonSelectedColor: {r:255,g:255,b:255} })
+```
+
+<hr />
+
+<a href="#clearSelection" id="clearSelection">#</a>  viewerInstance.visual.`clearSelection`(_number?_)
+
+Clears the [selection](#selection). _optional_ structure _number_ input. 
+
+**Example**
+
+```js
+viewerInstance.visual.clearSelection()
+```
+
+<hr />
+
 |No.|Function|Parameters|Description|
 |---|---|---|---|
-|4|highlight|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[]}], color: {r:number, g:number, b:number}, focus?: boolean, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number }`|Trigger highlight<br>Example:`viewerInstance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`|
-|5|clearHighlight|-|Clear highlight<br>Example:`viewerInstance.visual.clearHighlight()`|
-|6|select|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[], color: {r:number, g:number, b:number}, focus?: boolean, sideChain?: boolean, representation?: 'cartoon\|backbone\|ball-and-stick\|ellipsoid\|gaussian-surface\|line\|molecular-surface\|spacefill', representationColor?: {r:number, g:number, b:number}, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number}], nonSelectedColor: {r:number, g:number, b:number}, structureNumber?: number }`|Color and focus on a specific visual section<br>Example:`viewerInstance.visual.select({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15, color:{r:255,g:0,b:0}, focus: true}], nonSelectedColor: {r:255,g:255,b:255} })`<br>will color residue range 10-15 of Chain 'A' of Entity 1 in red and other residues with the provided default yellow color.|
-|7|clearSelection|Optional: `structureNumber`<br>Type: `number`|Clear Selection<br>Example:`viewerInstance.visual.clearSelection()`|
 |8|setColor|`data`<br>Type: `json`<br>`{ highlight?: {r:number, g:number, b:number}, select?: {r:number, g:number, b:number} }`|Set highlight / selection colour<br>Example:`viewerInstance.visual.setColor({ highlight: {r:255,g:255,b:0} })`<br> will set highlight colour to yellow. The selection colour refers to the colour used in the Selection Mode (the mouse cursor icon) and is not related to the colour used by the `select` method above.|
 |9|reset|`data`<br>Type: `json`<br>`{ camera?: boolean, theme?: boolean, highlightColor?: boolean, selectColor?: boolean }`|Reset to defaults<br>Example:`viewerInstance.visual.reset({ camera: true, theme: true })`<br>will reset camera and theme to defaults|
 |10|update|(options: PluginParams, reLoad?: boolean)<br> for plugin params [Refer here](https://github.com/PDBeurope/pdbe-molstar/wiki/1.-PDBe-Molstar-as-JS-plugin#plugin-parameters-options)|Updates the instance<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'})`<br>This method particularly used to update the main data(source)<br><br>Set reload param to false to load additional structure<br>Example:`viewerInstance.visual.update({moleculeId: '1cbs'}, false)`|
