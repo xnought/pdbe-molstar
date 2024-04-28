@@ -418,7 +418,7 @@ _object_ is of type
 
 ```ts
 {
-  data: {
+  data: Array<{
         auth_seq_id?: number,
         entity_id?: string,
         auth_asym_id?: string,
@@ -447,7 +447,7 @@ _object_ is of type
         uniprot_residue_number?: number,
         start_uniprot_residue_number?: number,
         end_uniprot_residue_number?: number
-      }[],
+      }>,
       color?: any, 
       focus?: boolean, 
       structureNumber?: number
