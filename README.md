@@ -410,6 +410,57 @@ viewerInstance.visual.focus([{entity_id: '1',
 
 <hr />
 
+<a href="#highlight" id="highlight">#</a>  viewerInstance.visual.`highlight`(_object_)
+
+Triggers highlight over the specified structures in the input _object_. 
+
+_object_ is of type
+
+```ts
+{
+  data: {
+        auth_seq_id?: number,
+        entity_id?: string,
+        auth_asym_id?: string,
+        struct_asym_id?: string,
+        residue_number?: number,
+        start_residue_number?: number,
+        end_residue_number?: number,
+        auth_residue_number?: number,
+        auth_ins_code_id?: string,
+        start_auth_residue_number?: number,
+        start_auth_ins_code_id?: string,
+        end_auth_residue_number?: number,
+        end_auth_ins_code_id?: string,
+        atoms?: string[],
+        label_comp_id?: string,
+        color?: any,
+        sideChain?: boolean,
+        representation?: string,
+        representationColor?: any,
+        focus?: boolean,
+        tooltip?: string,
+        start?: any,
+        end?: any,
+        atom_id?: number[],
+        uniprot_accession?: string,
+        uniprot_residue_number?: number,
+        start_uniprot_residue_number?: number,
+        end_uniprot_residue_number?: number
+      }[],
+      color?: any, 
+      focus?: boolean, 
+      structureNumber?: number
+}
+```
+
+**Example**
+```js
+viewerInstance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`
+```
+
+<hr />
+
 |No.|Function|Parameters|Description|
 |---|---|---|---|
 |4|highlight|`params`<br>Type: `json`<br>`{ data: [{entity_id?: string, auth_asym_id?: string, struct_asym_id?: string, residue_number?: number, start_residue_number?: number, end_residue_number?: number, auth_residue_number?: number, auth_ins_code_id?: string, start_auth_residue_number?: number, start_auth_ins_code_id?: string, end_auth_residue_number?: number, end_auth_ins_code_id?: string, atoms?: string[], label_comp_id?: string, atom_id?: number[]}], color: {r:number, g:number, b:number}, focus?: boolean, uniprot_accession?: string, uniprot_residue_number?: number, start_uniprot_residue_number?: number, end_uniprot_residue_number?: number, structureNumber?: number }`|Trigger highlight<br>Example:`viewerInstance.visual.highlight({ data: [{entity_id: '1', struct_asym_id: 'A', start_residue_number: 10, end_residue_number: 15}] })`|
