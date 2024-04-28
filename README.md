@@ -265,12 +265,7 @@ The input argument _object_  is type
 {r:number, g:number, b:number}
 ```
 
-| _object_ attribute  |  Description |
-|---|---|
-| r  | red integer between [0, 255]  |
-| g  | green integer between [0, 255]  |
-| b  | blue integer between [0, 255]  |
-
+where each number must be an integer between `[0, 255]`.
 
 **Example**
 Setting the background color to white
@@ -287,7 +282,7 @@ viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 
 <a href="#toggleControls" id="toggleControls">#</a>  viewerInstance.`toggleControls`(_boolean_?)
 
-Optional input. Toggles the control menu on (true) or off (false).
+Toggles the control menu on (true) or off (false).  _optional_ input.
 
 **Example**
 Will make the controls visible
@@ -301,9 +296,19 @@ viewerInstance.canvas.toggleControls(true)
 
 <hr />
 
-|No.|Function|Parameters|Description|
-|---|---|---|---|
-|3|toggleExpanded|`isExpanded`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle full-screen<br>Example:`viewerInstance.canvas.toggleExpanded(true)`<br>will switch to full-screen|
+<a href="#toggleExpanded" id="toggleExpanded">#</a>  viewerInstance.`toggledExpanded`(_boolean_?)
+
+Expands the viewerInstance to full-screen on (true) or off (false). _optional_ input.
+
+**Example**
+Will switch to full-screen
+
+```js
+viewerInstance.canvas.toggledExpanded(true)
+```
+
+> [!NOTE]
+> [`toggleExpanded`](#toggleExpanded) changes the `isExpanded` variable on the viewerInstance under the hood.
 
 ### Visual methods
 |No.|Function|Parameters|Description|
