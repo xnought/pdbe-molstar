@@ -285,9 +285,24 @@ viewerInstance.canvas.setBgColor({r:255, g:255, b:255})
 
 <hr />
 
+<a href="#toggleControls" id="toggleControls">#</a>  viewerInstance.`toggleControls`(_boolean_?)
+
+Optional input. Toggles the control menu on (true) or off (false).
+
+**Example**
+Will make the controls visible
+
+```js
+viewerInstance.canvas.toggleControls(true)
+```
+
+> [!NOTE]
+> [`toggleControls`](#toggleControls) changes the `isVisible` variable on the viewerInstance under the hood.
+
+<hr />
+
 |No.|Function|Parameters|Description|
 |---|---|---|---|
-|2|toggleControls|`isVisible`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle controls menu<br>Example:`viewerInstance.canvas.toggleControls(true)`<br>will make the controls visible|
 |3|toggleExpanded|`isExpanded`<br>Type: `boolean`<br>`true\|false`<br><i>Optional</i>|Toggle full-screen<br>Example:`viewerInstance.canvas.toggleExpanded(true)`<br>will switch to full-screen|
 
 ### Visual methods
