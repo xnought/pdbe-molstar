@@ -262,7 +262,7 @@ Sets Canvas background color in the viewerInstance with an RGB value.
 The input argument _object_  is type 
 
 ```ts 
-type input = {r:number, g:number, b:number};
+{r:number, g:number, b:number}
 ```
 
 **Example**
